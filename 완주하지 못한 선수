@@ -1,0 +1,19 @@
+class Solution {
+	public String solution(String[] participant, String[] completion) {
+		String answer="";
+		Arrays.sort(participant);
+		Arrays.sort(completion);
+		HashMap<Integer, String>comMap=new HashMap();
+		for(int i=0; i<completion.length; i++) {
+			comMap.put(i, completion[i]);                                           //comMap객체에 completion을 집어넣는다.
+			if(comMap.containsValue(participant[i])) {                              //comMap객체와 participant비교
+				comMap.remove(i);                                                     //중복처리를 위해 comMap객체를 remove
+			}
+			else if(!comMap.containsValue(participant[i])) {                        //comMap객체와 participant가 다를경우
+				answer=participant[i];                                                //answer에 participant를 집어넣는다.
+				break;
+			}
+		}
+		return answer;
+	}
+}
