@@ -1,4 +1,18 @@
-class Solution {
+package hash;
+
+import java.util.*;
+
+public class Hash_1_1 {
+	public static void main(String[] args) {
+		String[] participant= {"mislav", "stanko", "mislav", "ana"};
+		String[] completion= {"stanko", "ana", "mislav"};
+
+		Solution_1_1 sol=new Solution_1_1();
+		System.out.println(sol.solution(participant, completion));
+	}
+}
+
+class Solution_1_1 {
 	public String solution(String[] participant, String[] completion) {
 		String answer="";
 		Arrays.sort(participant);
