@@ -1,31 +1,39 @@
 class Solution {
 	public int solution(int[][] board, int[] moves) {
 		int answer = 0;
-		int s=0;
-		int a[]=new int[moves.length];
+		int s=0;								
+        // a[]에 몇개가 들어가있는지 카운트
+		int a[]=new int[moves.length];			
+        // board[][]의 인형이 들어갈 변수
 
 		for(int i=0; i<moves.length; i++){
 			for(int j=0; j<board.length; j++){
 				if(board[j][moves[i]-1]!=0){
-					a[s]=board[j][moves[i]-1];
-					s++;
-					board[j][moves[i]-1]=0;
+					a[s]=board[j][moves[i]-1];	
+                    // [moves[i]-1]를 해야 배열순서에 맞춤
+					s++;						
+                    // 인형 넣으면 카운트
+					board[j][moves[i]-1]=0;		
+                    // 인형을 뽑았으니 0
 					break;
 				}
 			}
             
             if(a[0]==0)
-                continue;
+                continue;						
+                // 0이면 카운트 X
             
 			else if(a[s-1]!=0) {
 				for(int k=1; k<a.length; k++) {
-					if(a[k]==0)
+					if(a[k]==0)					
+                    	// 0이면 break x
 						break;
 					else if(a[k]==a[k-1]) {
 						a[k]=0;
 						a[k-1]=0;
                         
-						s=k-1;
+						s=k-1;					
+                     	// k번째와 k-1번째가 같다면 k-1부터
 						answer+=2;
 					}
 				}
