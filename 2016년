@@ -1,0 +1,28 @@
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        int []month={31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        String []week= {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
+        int count=0;
+        
+        for(int i=0; i<month.length; i++){
+            if(i==a)
+                break;
+                // i가 0부터 시작하기 때문에 a(달)과 같아지면 break
+            
+            for(int j=0; j<month[i]; j++){
+                if(i==a-1&&j==b)
+                    break;
+                // i가 달(a-1)과 같고, j의 크기가 b와같으면 break
+                // 일부러 count보다 위에 두어 count가 되기전에 break시켰다.
+                
+                count+=1;
+            }
+        }
+        answer=week[(count-1)%7];
+        // count가 0부터 시작하기때문에 무조건적으로 한번은 돌아가고, 그 다음부터
+        // 조건이 성립한다. 그래서 count-1
+        
+        return answer;
+    }
+}
