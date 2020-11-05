@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr, int divisor) {
+        int[] answer = {};
+        int count=0;
+        int[] array=new int[arr.length];
+        
+        for(int i=0; i<arr.length; i++){
+            if((arr[i]%divisor)==0){
+            // 나눠서 나머지가 0
+                array[count]=arr[i];
+                count++;
+            }
+        }
+        
+        if(count==0){
+            count=1;
+            array[0]=-1;
+            answer=Arrays.copyOfRange(array, 0, count);
+            // 카운트가 0이면 -1을 넣는다.
+        }
+        
+        else
+            answer=Arrays.copyOfRange(array, 0, count);
+            // 카운트만큼 배열 복사
+        
+        Arrays.sort(answer);
+        
+        return answer;
+    }
+}
