@@ -1,0 +1,15 @@
+class Solution {
+    public String solution(String phone_number) {
+        String answer = "";
+        
+        while(answer.length()<phone_number.length()-4){
+        // 폰 넘버의 범위보다 4적게
+            answer+="*";
+        }
+        
+        answer+=phone_number.substring(phone_number.length()-4, phone_number.length());
+        // 폰 넘버에서 뒷4
+        
+        return answer;
+    }
+}
