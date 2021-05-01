@@ -4,9 +4,10 @@ class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int count=commands.length;
         int[] answer = new int[count];
+        int[] solution={};
         
         for(int i=0; i<commands.length; i++) {
-        	int[] solution= Arrays.copyOfRange(array, commands[i][0]-1, 
+        	solution= Arrays.copyOfRange(array, commands[i][0]-1, 
                                                commands[i][1]);
                                                // array와 같은 배열을 복사(commands의 0번째 원소와 1번째 원소의 범위대로)
         	Arrays.sort(solution);               // 정렬
