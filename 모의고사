@@ -1,0 +1,58 @@
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        int[][] students = {{1, 2, 3, 4, 5}, {2, 1, 2, 3, 2, 4, 2, 5},
+                {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
+        int[] compare = new int[students.length];
+        int count=0;
+        int max=0;
+        
+        for(int i=0; i<students.length; i++){
+            for(int j=0; j<answers.length; j++){
+                if(count==students[i].length)
+                    count=0;
+                if(answers[j]==students[i][count])
+                    compare[i]+=1;
+                count++;
+                // 카운트를 써서, students의 답안 갯수가 다르다고 하더라도,
+                걸러낼 수 있도록 코드를 짰다. 다른 분들과는 많이 다른 1차원적인
+                방식으로 푼 것 같다.
+            }
+            count=0;
+            // 카운트를 초기화시키지 않으면 위에 if에서 걸리지않고 종료될 수 있기에,
+            카운트를 초기화시켰다.
+        }
+        
+        max=compare[0];				// max를 찾기위해 compare의 0번째를 넣어 비교
+        count=0;
+        
+        for(int i=1; i<compare.length; i++) {
+        	if(max<compare[i])
+        		max=compare[i];
+                // max보다 compare i가 클경우 max에 넣어준다
+        }
+        
+        for(int i=0; i<compare.length; i++) {
+        	if(max==compare[i])
+        		count++;
+                // 1차원적이라고 또 느낀 부분.. 생각이 안나 compare과 max가 맞으면 count쳤다.
+        }
+        
+        answer=new int[count];				// 배열은 항상 범위가 필요하다.
+        count=0;
+        
+        for(int i=0; i<compare.length; i++) {
+        	if(max==compare[i]) {
+        		answer[count]=i+1;
+        		count++;
+                // 여기서 많이 고민했는데, 다 맞추면 [1, 2, 3] 맞춘사람 만큼만 배열을
+                만들어야 했다. 그런데 카운트는 어떻게..? 하다 보니 그냥 answer[count]를
+                주고 i+1로 때려박아 버렸다.
+                여기서 많이 때려치우고 어레이리스트나, 해시를 쓸까 했지만
+                그냥 기왕 푸는김에 풀었다.
+        	}
+        }
+        
+        return answer;
+    }
+}
